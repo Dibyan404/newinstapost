@@ -1,1 +1,8 @@
-<h1>Hello World</h1>
+<% @posts.each do |post| %>
+    <%= image_tag post.user.photo %>
+    <!--In this case, post is the placeholder variable in the each loop, representing a single Post from the @posts collection. -->
+    <!-- Since Post belongs to User, Rails allows you to call the user that owns the Post by doing post.user. -->
+    <%= post.user.name %> 
+    <%= image_tag post.photo %>
+    <%= post.description %>
+<% end %>
