@@ -9,7 +9,7 @@
 
 class PostsController < ApplicationController
     before_action :is_owner?, only: [:edit, :update, :destroy]
-     before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :create]
     #def create 
         #@post = Post.find(params[:id])
         #@post.create(post_params)
@@ -43,6 +43,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         #What Post.find(params[:id]) is doing is, it's finding a Post with an id that matches the params[:id].
     end
+    
     def update
         @post = Post.find(params[:id])
         @post.update(post_params)
