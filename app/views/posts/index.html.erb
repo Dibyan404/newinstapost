@@ -15,7 +15,6 @@
     
     <% post.comments.each do |comment| %>
         <p><%= comment.user.name %>: <%= comment.text %></p><br>
-        
         <% if comment.user == current_user %>    
             <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
             <%= link_to 'Edit', edit_post_comment_path(post_id: post.id, id: comment.id), method: :get %>
