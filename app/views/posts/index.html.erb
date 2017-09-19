@@ -10,4 +10,9 @@
         <%= link_to 'Edit Post', edit_post_path(post.id) %>
         <%= link_to 'Delete Post', post_path(post.id), method: :delete %>
     <% end %>
+    
+    <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post do |f| %>
+    <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...' %>
+    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+    <% end %>
 <% end %>
