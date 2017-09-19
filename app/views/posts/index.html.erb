@@ -5,7 +5,9 @@
     <%= post.user.name %> 
     <%= image_tag post.photo %>
     <%= post.description %>
+    <%= image_tag post.user.photo %>
     <% if post.user == current_user %>
         <%= link_to 'Edit Post', edit_post_path(post.id) %>
+        <%= link_to 'Delete Post', post_path(post.id), method: :delete %>
     <% end %>
 <% end %>
