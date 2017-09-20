@@ -9,24 +9,19 @@
 </head>
 <body>
   
-  <nav>
-    <span class="pull-right brand">Instapost</span>
-    <!-- The pull-right class that we added to the first span is handy Bootstrap class that will literally pull the span to the right
-    
-    We need to define our brand class in master.scss
-    
-    -->
-    <% if user_signed_in? %>
-    <%= link_to 'New Post', new_post_path %>
-    <%= link_to 'Edit Settings', edit_user_registration_path %>
-    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to 'Sign Up', new_user_registration_path %>
-    <%= link_to 'Log In', new_user_session_path %>
-    <% end %>
-  </nav>
-
-<%= yield %>
+   <div id = "wrap">
+      <%= render 'shared/nav' %>
+      <div class = "container">
+        <div class = "row">
+          <div class = "col-xs-12 col-md-6 col-md-offset-3">
+              <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="g71f5">
+    <%= render 'shared/footer' %>
+  </footer>
 
 </body>
 </html>

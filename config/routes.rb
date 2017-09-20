@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :post do
     resources :comments
   end
-  resources :users, only: :show
+  resources :users
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

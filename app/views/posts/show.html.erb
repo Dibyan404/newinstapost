@@ -1,6 +1,51 @@
-<%= image_tag @user.photo %>
-<%= @user.name %>
-<%= pluralize(@user.posts.count, 'post') %>
-<%= @user.posts.each do |post| %>
-    <%= image_tag post.photo %>
-<% end %>
+<div id="wrap">        
+        <div class="post_box">
+            <div class="post_body">
+                    <%= image_tag @post.user.photo, class: 'prof_pic_small' %>
+                    <%=  link_to @post.user.name, user_path(@post.user.id) %>
+                    <%= image_tag @post.photo, class:'photo' %>
+                    <% if @post.user == current_user %>
+                    
+                        <div class="panel panel-default">
+                            
+                                <div class="post_body">
+                                     <%= @post.description %>
+                                </div>
+                                
+                            <div class="panel-body">
+                                    <button type="button" class="btn btn-default">
+                                        <%= link_to 'Edit Post', edit_post_path(@post.id) %>
+                                    </button>
+                                    <button type="button" class="btn btn-default">
+                                        <%= link_to 'Delete Post', post_path(@post.id), method: :delete %>
+                                    </button>
+                            </div>
+                        </div>
+                    <% end %>
+                    
+                    <div class="post_comments">
+                        <% @post.comments.each do |comment| %>
+                             <div class="panel panel-default">
+                                    <div class="panel-body">
+                                            <%= comment.user.name %>: <%= comment.text %>
+                                            <% if comment.user == current_user %> 
+                                                <%= link_to 'Edit', edit_post_comment_path(post_id: @post.id, id: comment.id), method: :get %>
+                                                <%= link_to 'Delete', post_comment_path(post_id: @post.id, id: comment.id), method: :delete %>
+                                            <% end %>
+                                     </div>
+                             </div>
+                        <% end %>
+                    
+                        <hr>
+                    
+                        <% if user_signed_in? %>
+                            <%= simple_form_for Comment.new, url: post_comments_path(@post), method: :post do |f| %>
+                                <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...' %>
+                                <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+                            <% end %>
+                        <% end %> 
+                </div>
+            </div>
+        </div>
+</div>
+  
