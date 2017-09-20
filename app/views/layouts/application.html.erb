@@ -2,12 +2,20 @@
 <html>
 <head>
   <title>Workspace</title>
+  <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
   <nav>
+    <span class="pull-right brand">Instapost</span>
+    <!-- The pull-right class that we added to the first span is handy Bootstrap class that will literally pull the span to the right
+    
+    We need to define our brand class in master.scss
+    
+    -->
     <% if user_signed_in? %>
     <%= link_to 'New Post', new_post_path %>
     <%= link_to 'Edit Settings', edit_user_registration_path %>
