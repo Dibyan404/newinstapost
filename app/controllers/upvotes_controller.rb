@@ -7,7 +7,11 @@ class UpvotesController < ApplicationController
         @post = Post.find(params[:post_id])
         @post.liked_by current_user
         #Since the user linking the post is current_user
-        redirect_to posts_path
+        #redirect_to posts_path
+        respond_to do |format|
+            format.html { redirect_to posts_path}
+            format.js {}
+        end
     end
 
 end
