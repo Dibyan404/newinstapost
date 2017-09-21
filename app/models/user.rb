@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   mount_uploader :photo, PhotoUploader
-  acts_as_votable
+  acts_as_voter
   #We need to set the User model as the voter.
 end

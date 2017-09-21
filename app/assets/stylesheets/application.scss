@@ -15,3 +15,5 @@
  */
 @import "bootstrap-sprockets"; //provides individual Bootstrap Javascript files(for eg: alert.js or dropdown.js)
 @import "bootstrap"; //provides a concatenated file containing all Bootstrap Javascripts.
+@import "font-awesome-sprockets";
+@import "font-awesome";

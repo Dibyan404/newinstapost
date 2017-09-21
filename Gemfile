@@ -28,6 +28,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'acts_as_votable','~> 0.10.0'
+gem 'font-awesome-sass','~>4.6.2'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
