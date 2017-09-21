@@ -65,6 +65,7 @@ class PostsController < ApplicationController
     end
     
     
+    
     private
     
     def is_owner?

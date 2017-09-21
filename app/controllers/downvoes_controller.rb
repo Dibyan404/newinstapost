@@ -1,0 +1,2 @@
+class DownvoesController < ApplicationController
+end

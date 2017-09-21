@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :post do
     resources :comments
+    resources :upvotes, pnly: :create
+    resource :downvotes, only: :create
   end
   resources :users
   # Example of regular route:
