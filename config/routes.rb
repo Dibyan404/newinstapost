@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :posts
   resources :post do
     resources :comments
-    resources :upvotes, pnly: :create
+    resources :upvotes, only: :create
     resource :downvotes, only: :create
   end
   resources :users
+  resources :comments
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

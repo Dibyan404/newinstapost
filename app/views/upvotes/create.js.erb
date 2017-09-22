@@ -1,1 +1,1 @@
-$('#likes_container_<%= @post.id %>').html("<%= escape_javascript render partial: '/posts/likes', locals: { post: @post } %>")
+$('#likes_container_<%= @post.id %>').html("<%= escape_javascript render partial: 'shared/likes', locals: { post: @post } %>")

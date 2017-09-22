@@ -1,0 +1,32 @@
+<%= image_tag post.photo, class: 'photo' %>
+                <% if post.user == current_user %>
+                    <div class="panel panel-default">
+                            <div class="post_body">
+                                 <%= post.description %>
+                            </div>
+                            
+                        <div class="panel-body">
+                                <button type="button" class="btn btn-default">
+                                    <%= link_to 'Edit Post', edit_post_path(post.id) %>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <%= link_to 'Delete Post', post_path(post.id), method: :delete %>
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                    <%= link_to 'Go to post', post_path(post.id) %> 
+                                </button>
+                        </div>
+                    </div>
+                    
+                <% else %>
+                <div class="panel panel-default">
+                            <div class="post_body">
+                                 <%= post.description %>
+                            </div>
+                        <div class="panel-body">
+                            <button type="button" class="btn btn-default">
+                                <%= link_to 'Go to post', post_path(post.id) %> 
+                            </button>
+                        </div>
+                    </div>
+                <% end %>

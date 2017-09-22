@@ -1,78 +1,24 @@
 <% @posts.each do |post| %>
 <div class="post_box">
-    <div class="post_header">
-         <%= image_tag post.user.photo,class:'prof_pic_small' %>
-        <!--In this case, post is the placeholder variable in the each loop, representing a single Post from the @posts collection. -->
-        <!-- Since Post belongs to User, Rails allows you to call the user that owns the Post by doing post.user. -->
+    
+    <div class="post_body">
+        <div class="post_header">
+                <%= render partial: 'shared/header', locals: {post: post} %>
+        </div>
         
-        <%= link_to post.user.name, user_path(post.user.id) %> 
-        <span class="timestamp pull-right"><%= distance_of_time_in_words(DateTime.now, post.created_at) %> ago</span>
-    </div>
-   
-    <%= image_tag post.photo, class: 'photo' %>
-    
-    
-    
-    <% if post.user == current_user %>
-        <div class="panel panel-default">
-                <div class="post_body">
-                     <%= post.description %>
-                </div>
-                
-            <div class="panel-body">
-                    <button type="button" class="btn btn-default">
-                        <%= link_to 'Edit Post', edit_post_path(post.id) %>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <%= link_to 'Delete Post', post_path(post.id), method: :delete %>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <%= link_to 'Go to post', post_path(post.id) %> 
-                    </button>
-            </div>
+        <div class="post">
+                <%= render partial: 'shared/post', locals: {post: post} %>
         </div>
-    <% else %>
-    <div class="panel panel-default">
-                <div class="post_body">
-                     <%= post.description %>
-                </div>
-            <div class="panel-body">
-                <button type="button" class="btn btn-default">
-                    <%= link_to 'Go to post', post_path(post.id) %> 
-                </button>
-            </div>
-        </div>
-    <% end %>
-    
-    
-    <div class="post_comments">
-        <% post.comments.each do |comment| %>
-             <div class="panel panel-default">
-                    <div class="panel-body">
-                            <%= comment.user.name %>: <%= comment.text %>
-                            <% if comment.user == current_user %> 
-                                <%= link_to 'Edit', edit_post_comment_path(post_id: post.id, id: comment.id), method: :get %>
-                                <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
-                            
-                            <% end %>
-                     </div>
-             </div>
-        <% end %>
-    
-        <hr>
+        
         <span id="likes_container_<%= post.id %>">
-            <%#= The id of this span will change depending on the id of the post. For eg, if the post.id is 1, then the span is will be likes_container_1. %>
-            <%= render partial: 'likes', locals: {post: post} %>
-            <%#= Notice how we added locals: {post: post}. locals in partial are just variables that you can use within your partial. You can assign the variable a value. In this case are assisgning the post variable to the value of the post( post comes from the loop inside index.html.erb). Then, we can use the post varible inside of the partial. %>
+                <%#= The id of this span will change depending on the id of the post. For eg, if the post.id is 1, then the span is will be likes_container_1. %>
+                <%= render partial: 'shared/likes', locals: {post: post} %>
+                <%#= Notice how we added locals: {post: post}. locals in partial are just variables that you can use within your partial. You can assign the variable a value. In this case are assisgning the post variable to the value of the post( post comes from the loop inside index.html.erb). Then, we can use the post varible inside of the partial. %>
         </span>
+        <div class="post_comments">
+                <%= render partial: 'shared/comment', locals: {post: post} %>
+        </div>
         
-    
-        <% if user_signed_in? %>
-            <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post, html: { class:'form-horizontal'} do |f| %>
-                <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...' %>
-                <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-            <% end %>
-        <% end %> 
     </div>
 </div>
 

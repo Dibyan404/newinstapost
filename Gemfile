@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.13'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,7 +29,7 @@ gem 'carrierwave'
 gem 'simple_form'
 gem 'acts_as_votable','~> 0.10.0'
 gem 'font-awesome-sass','~>4.6.2'
-
+gem 'x-editable-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

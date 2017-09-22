@@ -18,7 +18,23 @@ class CommentsController < ApplicationController
     
     def edit
         @comment = Comment.find(params[:id])
+        #respond_to do |format|
+          #  format.html {redirect_to posts_path}
+         #   format.js {}
+        #end
     end
+    
+    def update
+        @comment = Comment.find(params[:id])
+        @comment.update(comment_params)
+        if @comment.valid?
+            redirect_to root_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+        
+    
     
     
     def destroy
