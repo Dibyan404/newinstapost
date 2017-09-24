@@ -9,12 +9,25 @@ class CommentsController < ApplicationController
         #since the comment belongs to a Post and a User as well, we can't chain the method like this: current_user.@post.comments.create.
         #we can use this merge method to merge in the user_id and set it to current_user.id. That's what .merge(user_id: current_user.id) is doing right here.
         if @comment.valid?
-            redirect_to root_path
+            #redirect_to root_path
+            respond_to do |format|
+                 format.html {redirect_to posts_path}
+                 format.js {}
+            end
+            
         else
             flash[:alert] = "Invalid atttributes"
             redirect_to root_path
         end
     end
+    
+    # def show
+    #     @comment = Comment.find(params[:id])
+    #     respond_to do |format|
+    #              format.html {redirect_to root_path}
+    #              format.js {}
+    #     end
+    # end
     
     def edit
         @comment = Comment.find(params[:id])
@@ -34,9 +47,6 @@ class CommentsController < ApplicationController
         end
     end
         
-    
-    
-    
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy

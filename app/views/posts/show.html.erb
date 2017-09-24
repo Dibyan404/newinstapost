@@ -29,8 +29,9 @@
                             <%= render partial: 'shared/likes', locals: {post: @post} %>
                             <%#= Notice how we added locals: {post: post}. locals in partial are just variables that you can use within your partial. You can assign the variable a value. In this case are assisgning the post variable to the value of the post( post comes from the loop inside index.html.erb). Then, we can use the post varible inside of the partial. %>
                     </span>
-                    
-                   <%= render partial: 'shared/comment', locals: {post: @post} %>
+                    <div class="post_comments">
+                           <%= render partial: 'shared/comment', locals: {post: @post} %>
+                    </div>
             </div>
         </div>
 </div>

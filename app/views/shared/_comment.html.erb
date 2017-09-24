@@ -4,7 +4,7 @@
                             
                             <%= link_to comment.user_name,  user_path(comment.user_id) %>: <%= comment.text %>
                             <% if comment.user == current_user %> 
-                                <%= link_to 'Edit', edit_post_comment_path(post_id: comment.id, id: comment.id), method: :get, render: true%>
+                                <%= link_to 'Edit', edit_post_comment_path(post_id: comment.id, id: comment.id), method: :get, render: true %>
                                 <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
                             
                             <% end %>
@@ -17,10 +17,10 @@
         
     
         <% if user_signed_in? %>
-            <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post, html: { class:'form-horizontal'} do |f| %>
-                <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...'%>
+            <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post,render: true, html: { class:'form-horizontal'} do |f| %>
+                <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...' %>
                 <%#= <textarea aria-label="Add a comment..." class="bilrf" placeholder="Add a comment..." style="height:36px;"></textarea> %>
-                <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+                <%= f.submit 'Post', class: 'btn btn-primary btn-block', render: true %>
             <% end %>
         <% end %> 
         
