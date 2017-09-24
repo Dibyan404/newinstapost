@@ -2,7 +2,7 @@
              <div class="panel panel-default">
                     <div class="panel-body">
                             
-                            <%= link_to comment.user.name,  user_path(comment.user_id) %>: <%= comment.text %>
+                            <%= link_to comment.user_name,  user_path(comment.user_id) %>: <%= comment.text %>
                             <% if comment.user == current_user %> 
                                 <%= link_to 'Edit', edit_post_comment_path(post_id: comment.id, id: comment.id), method: :get, render: true%>
                                 <%= link_to 'Delete', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
