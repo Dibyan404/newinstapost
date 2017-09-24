@@ -33,7 +33,8 @@ class PostsController < ApplicationController
     end
     
     def index
-        @posts = Post.all.order('created_at DESC')
+        @posts = Post.all.order('created_at DESC').includes(:user,comments: :user)
+        # Eager Loading(.includes): We can fetch all of the records that we need to query all at once. This is far more efficient and performant than trying to fetch all of the records one by one. Fetching 100 records in 1 query is faster than issuing 100 queries to fetch 1 query each.
         #Post.all will give us all of the posts in the database.
         #change the order of our collection of Posts by attaching the order method and giving it the parameter 'created_at DESC'. .order('created_at DESC') is saying, order it by the created_at attribute in descending order.
     end
