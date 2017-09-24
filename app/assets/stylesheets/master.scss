@@ -15,11 +15,14 @@ nav{
     font-family: 'Satisfy', cursive;
     font-size: 30px;
     vertical-align: middle;
+    margin-top: -74px;
+    padding: 0 40px 0 50px;
+    text-decoration-line:unset;
 }
 
 .nav_links{
     vertical-align: middle;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: 500;
     margin: 0 10px;
     //display: inline;
@@ -181,3 +184,14 @@ body{
 //     resize: none;
 //     max-height: 80px;
 // }
+
+.socio-icons{
+  font-size: 40px;
+  color:unset;
+  left:20px;
+}
+.brand a{
+    color: unset;
+    text-decoration: none;
+
+}
